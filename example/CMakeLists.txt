@@ -1,5 +1,7 @@
 project(ramcpp_example)
 
+file(COPY files DESTINATION ${CMAKE_BINARY_DIR}/bin)
+
 add_executable(${PROJECT_NAME} main.cpp)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES

@@ -16,7 +16,10 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 target_sources(${PROJECT_NAME} PRIVATE
-    include/ramcpp/ram.h
+    include/ramcpp/defaults.hpp
+    include/ramcpp/hash.hpp
+    include/ramcpp/ram.hpp
+    include/ramcpp/types.hpp
 
     src/ram.cpp
 )
