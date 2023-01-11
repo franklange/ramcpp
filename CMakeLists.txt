@@ -1,11 +1,8 @@
 cmake_minimum_required(VERSION 3.10)
-project(template)
+project(ramcpp)
 
-find_package(Threads REQUIRED)
-find_package(Boost REQUIRED COMPONENTS system)
-
-option(TEMPLATE_TESTS "Enable Tests" OFF)
-option(TEMPLATE_EXAMPLES "Enable Examples" OFF)
+option(RAMCPP_TESTS "Enable Tests" OFF)
+option(RAMCPP_EXAMPLES "Enable Examples" OFF)
 
 if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build Type" FORCE)
@@ -19,23 +16,19 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 )
 
 target_sources(${PROJECT_NAME} PRIVATE
-    include/template/template.hpp
+    include/ramcpp/ram.h
 
-    src/template.cpp
+    src/ram.cpp
 )
 
 target_include_directories(${PROJECT_NAME} PUBLIC include)
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_20)
 
-target_link_libraries(${PROJECT_NAME} PUBLIC
-    Threads::Threads
-)
-
-if (TEMPLATE_TESTS)
+if (RAMCPP_TESTS)
     enable_testing()
     add_subdirectory(test)
 endif()
 
-if (TEMPLATE_EXAMPLES)
+if (RAMCPP_EXAMPLES)
     add_subdirectory(example)
 endif()
